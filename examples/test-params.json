@@ -1,0 +1,14 @@
+[
+  {"ParameterKey": "ClusterName", "ParameterValue": "chtest"},
+  {"ParameterKey": "ClickHouseVersion", "ParameterValue": "26.8.24.9"},
+  {"ParameterKey": "ClickHouseInstanceType", "ParameterValue": "m7g.xlarge"},
+  {"ParameterKey": "KeeperInstanceType", "ParameterValue": "t4g.medium"},
+  {"ParameterKey": "ShardCount", "ParameterValue": "1"},
+  {"ParameterKey": "ReplicaCount", "ParameterValue": "2"},
+  {"ParameterKey": "KeeperCount", "ParameterValue": "3"},
+  {"ParameterKey": "VpcId", "ParameterValue": "vpc-0123456789abcdef0"},
+  {"ParameterKey": "SubnetIds", "ParameterValue": "subnet-0aaaaaaaaaaaaaaa1,subnet-0aaaaaaaaaaaaaaa2,subnet-0aaaaaaaaaaaaaaa3"},
+  {"ParameterKey": "MultiAZ", "ParameterValue": "true"},
+  {"ParameterKey": "DataVolumeSize", "ParameterValue": "100"},
+  {"ParameterKey": "ClientCidr", "ParameterValue": "172.31.0.0/16"}
+]

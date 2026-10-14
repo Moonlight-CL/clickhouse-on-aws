@@ -1,0 +1,61 @@
+[2026-10-13T05:24:35Z] insert deduplication disabled with: --insert_deduplicate 0
+[2026-10-13T05:24:35Z] === reset: empty t_billing_records on both replicas
+[2026-10-13T05:24:36Z] === environment
+[2026-10-13T05:24:36Z] === W1 bulk INSERT ... SELECT, 100000000 rows in batches of 10M
+[2026-10-13T05:24:42Z] RESULT {"test":"W1","batch":0,"rows":10000000,"seconds":6.442,"ts":"2026-10-13T05:24:42Z"}
+[2026-10-13T05:24:54Z] RESULT {"test":"W1","batch":1,"rows":10000000,"seconds":11.461,"ts":"2026-10-13T05:24:54Z"}
+[2026-10-13T05:25:28Z] RESULT {"test":"W1","batch":2,"rows":10000000,"seconds":34.815,"ts":"2026-10-13T05:25:28Z"}
+[2026-10-13T05:26:09Z] RESULT {"test":"W1","batch":3,"rows":10000000,"seconds":40.816,"ts":"2026-10-13T05:26:09Z"}
+[2026-10-13T05:26:47Z] RESULT {"test":"W1","batch":4,"rows":10000000,"seconds":37.624,"ts":"2026-10-13T05:26:47Z"}
+[2026-10-13T05:27:32Z] RESULT {"test":"W1","batch":5,"rows":10000000,"seconds":44.670,"ts":"2026-10-13T05:27:32Z"}
+[2026-10-13T05:28:18Z] RESULT {"test":"W1","batch":6,"rows":10000000,"seconds":46.061,"ts":"2026-10-13T05:28:18Z"}
+[2026-10-13T05:29:06Z] RESULT {"test":"W1","batch":7,"rows":10000000,"seconds":48.094,"ts":"2026-10-13T05:29:06Z"}
+[2026-10-13T05:30:00Z] RESULT {"test":"W1","batch":8,"rows":10000000,"seconds":54.157,"ts":"2026-10-13T05:30:00Z"}
+[2026-10-13T05:31:01Z] RESULT {"test":"W1","batch":9,"rows":10000000,"seconds":60.959,"ts":"2026-10-13T05:31:01Z"}
+[2026-10-13T05:31:06Z] RESULT {"test":"W1_total","rows":100000000,"seconds":385.153,"replication_catchup_s":4.479,"stats":{"inserts":10,"written_rows":100000000,"written_bytes":44490092906,"p50_ms":42701,"p95_ms":57855.549999999996,"p99_ms":60303.91,"max_ms":60916,"max_memory":7662663260},"ts":"2026-10-13T05:31:06Z"}
+[2026-10-13T05:32:42Z] === preparing client insert files
+[2026-10-13T05:34:31Z] RESULT {"test":"files","rows_file_rows":100000,"rows_file_bytes":32688723,"events_file_bytes":126790331,"ts":"2026-10-13T05:34:31Z"}
+[2026-10-13T05:34:31Z] === W2 client batch inserts
+[2026-10-13T05:34:48Z] RESULT {"test":"W2","concurrency":1,"inserts":48,"rows":4800000,"rows_stored":4800000,"seconds":16.708,"replication_catchup_s":0.095,"settings":"","stats":{"inserts":48,"written_rows":4800000,"written_bytes":2135527223,"p50_ms":288.5,"p95_ms":303.65,"p99_ms":517.6000000000001,"max_ms":574,"max_memory":337990322},"ts":"2026-10-13T05:34:48Z"}
+[2026-10-13T05:37:29Z] RESULT {"test":"W2","concurrency":4,"inserts":192,"rows":19200000,"rows_stored":19200000,"seconds":93.918,"replication_catchup_s":1.189,"settings":"","stats":{"inserts":192,"written_rows":19200000,"written_bytes":8542108892,"p50_ms":2424,"p95_ms":3320.5499999999997,"p99_ms":4174.920000000001,"max_ms":4885,"max_memory":337990658},"ts":"2026-10-13T05:37:29Z"}
+[2026-10-13T05:42:54Z] RESULT {"test":"W2","concurrency":8,"inserts":288,"rows":28800000,"rows_stored":28800000,"seconds":116.124,"replication_catchup_s":1.189,"settings":"","stats":{"inserts":288,"written_rows":28800000,"written_bytes":12813163338,"p50_ms":3446.5,"p95_ms":7504.649999999998,"p99_ms":11294.25,"max_ms":11596,"max_memory":337990658},"ts":"2026-10-13T05:42:54Z"}
+[2026-10-13T05:45:08Z] RESULT {"test":"W2","concurrency":16,"inserts":288,"rows":28800000,"rows_stored":28800000,"seconds":86.291,"replication_catchup_s":1.192,"settings":"","stats":{"inserts":288,"written_rows":28800000,"written_bytes":12813163338,"p50_ms":4027,"p95_ms":11905.849999999993,"p99_ms":13826.32,"max_ms":14586,"max_memory":337991170},"ts":"2026-10-13T05:45:08Z"}
+[2026-10-13T05:46:23Z] === W2Q batch inserts with insert_quorum=2 (synchronous replication)
+[2026-10-13T05:47:22Z] RESULT {"test":"W2Q","concurrency":8,"inserts":192,"rows":19200000,"rows_stored":19200000,"seconds":57.717,"replication_catchup_s":0.097,"settings":"--insert_quorum 2","stats":{"inserts":192,"written_rows":19200000,"written_bytes":8542108892,"p50_ms":2269.5,"p95_ms":4342.099999999999,"p99_ms":4592.81,"max_ms":4607,"max_memory":337991618},"ts":"2026-10-13T05:47:22Z"}
+[2026-10-13T05:47:37Z] === W3 small inserts: sync vs async_insert
+[2026-10-13T05:47:45Z] RESULT {"test":"W3sync","concurrency":8,"inserts":400,"rows":400000,"rows_stored":400000,"seconds":6.356,"replication_catchup_s":1.188,"settings":"","stats":{"inserts":400,"written_rows":400000,"written_bytes":177477600,"p50_ms":83,"p95_ms":92,"p99_ms":94,"max_ms":97,"max_memory":14617705},"ts":"2026-10-13T05:47:45Z"}
+[2026-10-13T05:48:15Z] RESULT {"test":"W3async","concurrency":16,"inserts":1600,"rows":1600000,"rows_stored":1600000,"seconds":29.626,"replication_catchup_s":0.094,"settings":"--async_insert 1 --wait_for_async_insert 1","stats":{"inserts":1600,"written_rows":0,"written_bytes":0,"p50_ms":248,"p95_ms":290,"p99_ms":298.01,"max_ms":315,"max_memory":2578026},"ts":"2026-10-13T05:48:15Z"}
+[2026-10-13T05:48:20Z] === W4 MV pipeline
+[2026-10-13T05:49:59Z] RESULT {"test":"W4","concurrency":1,"inserts":24,"rows":2400000,"rows_stored":2400000,"seconds":98.092,"replication_catchup_s":0.093,"settings":"","stats":{"inserts":24,"written_rows":4800000,"written_bytes":3725371591,"p50_ms":4024,"p95_ms":4080.1499999999996,"p99_ms":4106.1,"max_ms":4113,"max_memory":348341151},"ts":"2026-10-13T05:49:59Z"}
+[2026-10-13T05:50:49Z] RESULT {"test":"W4","concurrency":4,"inserts":48,"rows":4800000,"rows_stored":4800000,"seconds":49.659,"replication_catchup_s":0.096,"settings":"","stats":{"inserts":48,"written_rows":9600000,"written_bytes":7450896447,"p50_ms":4037.5,"p95_ms":4156.95,"p99_ms":4277.28,"max_ms":4313,"max_memory":346156306},"ts":"2026-10-13T05:50:49Z"}
+[2026-10-13T05:51:21Z] RESULT {"test":"W4","concurrency":8,"inserts":48,"rows":4800000,"rows_stored":4800000,"seconds":25.908,"replication_catchup_s":1.188,"settings":"","stats":{"inserts":48,"written_rows":9600000,"written_bytes":7450682092,"p50_ms":4181.5,"p95_ms":4383.2,"p99_ms":4427.49,"max_ms":4443,"max_memory":346394591},"ts":"2026-10-13T05:51:21Z"}
+[2026-10-13T05:52:18Z] RESULT {"test":"W4_check","rows_added":12000000,"check":{"mv_rows":12000000,"mv_hash":14129277783919779003,"expected_hash":14129277783919779003,"identical":1},"ts":"2026-10-13T05:52:18Z"}
+[2026-10-13T05:52:19Z] RESULT {"test":"final_replication_catchup","seconds":0.097,"ts":"2026-10-13T05:52:19Z"}
+[2026-10-13T05:52:19Z] === R reads
+[2026-10-13T05:53:17Z] read Q1_user_daily_bill c=1 done
+[2026-10-13T05:53:38Z] read Q1_user_daily_bill c=8 done
+[2026-10-13T05:53:58Z] read Q1_user_daily_bill c=32 done
+[2026-10-13T05:54:18Z] read Q2_user_recent_records c=1 done
+[2026-10-13T05:54:39Z] read Q2_user_recent_records c=8 done
+[2026-10-13T05:54:59Z] read Q2_user_recent_records c=32 done
+[2026-10-13T05:55:19Z] read Q3_org_monthly_summary c=1 done
+[2026-10-13T05:55:41Z] read Q3_org_monthly_summary c=8 done
+[2026-10-13T05:56:07Z] read Q3_org_monthly_summary c=32 done
+[2026-10-13T05:56:27Z] read Q4_hourly_dashboard_24h c=1 done
+[2026-10-13T05:56:48Z] read Q4_hourly_dashboard_24h c=8 done
+[2026-10-13T05:57:08Z] read Q4_hourly_dashboard_24h c=32 done
+[2026-10-13T05:57:29Z] read Q5_top_users_7d c=1 done
+[2026-10-13T05:57:50Z] read Q5_top_users_7d c=8 done
+[2026-10-13T05:58:12Z] read Q5_top_users_7d c=32 done
+[2026-10-13T05:58:32Z] read Q6_provider_errors_24h c=1 done
+[2026-10-13T05:58:52Z] read Q6_provider_errors_24h c=8 done
+[2026-10-13T05:59:12Z] read Q6_provider_errors_24h c=32 done
+[2026-10-13T05:59:33Z] read Q7_trace_lookup c=1 done
+[2026-10-13T05:59:53Z] read Q7_trace_lookup c=8 done
+[2026-10-13T06:00:13Z] read Q7_trace_lookup c=32 done
+[2026-10-13T06:00:33Z] read Q8_monthly_model_revenue c=1 done
+[2026-10-13T06:00:58Z] read Q8_monthly_model_revenue c=8 done
+[2026-10-13T06:01:27Z] read Q8_monthly_model_revenue c=32 done
+[2026-10-13T06:02:30Z] read mixed_1replica c=16 done
+[2026-10-13T06:03:31Z] read mixed_2replicas c=16 done
+[2026-10-13T06:03:32Z] === ALL DONE

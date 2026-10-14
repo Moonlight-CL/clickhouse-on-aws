@@ -1,0 +1,1 @@
+<li class="bad">原 MV DDL 在 ClickHouse 25.8 上同样执行失败：MV 输出了目标表中不存在的 <code>client_ip</code>、<code>forwarded_for</code> 两列，报错 <code>Code: 8 THERE_IS_NO_COLUMN</code>，与 26.8 的错误相同。这说明问题不是 26.x 才引入的，25.8 本身就会拒绝这条 DDL。测试中同样从 MV 中删掉了这两列，两个版本使用完全相同的 <code>perf/sql/01_schema.sql</code>。</li>

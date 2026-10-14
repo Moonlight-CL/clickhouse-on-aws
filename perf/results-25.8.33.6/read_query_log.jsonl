@@ -1,0 +1,12 @@
+{"h":15568538692644343734,"q":"SELECT id, created_at, model_code, input_tokens, output_toke","n":4238,"read_rows":1253050.7555450685,"read_bytes":39165668.40679566,"p50_ms":146,"memory":5571962.073383671}
+{"h":5727537833147037449,"q":"SELECT provider_id, count() AS requests, countIf(status != '","n":3364,"read_rows":2441748,"read_bytes":85388846,"p50_ms":129,"memory":11997979.526753865}
+{"h":14604053687366715537,"q":"SELECT * FROM token_hub.t_billing_records_mv WHERE trace_id ","n":3220,"read_rows":5678131.818012422,"read_bytes":251539610.78416148,"p50_ms":121,"memory":18884608.559937887}
+{"h":6699712034752466927,"q":"SELECT toDate(created_at) AS d, model_code, count() AS reque","n":1652,"read_rows":12522619.697336562,"read_bytes":196965239.596247,"p50_ms":451,"memory":9277273.74818402}
+{"h":2930940415741616185,"q":"SELECT toStartOfHour(created_at) AS h, model_code, count() A","n":1287,"read_rows":2376686,"read_bytes":177389949,"p50_ms":333,"memory":33592648.5975136}
+{"h":2809887207380997743,"q":"SELECT model_code, currency, count() AS requests, sum(input_","n":498,"read_rows":53927984.909638554,"read_bytes":2078412438.1927712,"p50_ms":3151,"memory":14614758.483935744}
+{"h":13760762752697465117,"q":"SELECT user_id, count() AS requests, sum(cost) AS total_cost","n":377,"read_rows":16398109,"read_bytes":885383484,"p50_ms":1347,"memory":80819756.69761273}
+{"h":5138692925915076805,"q":"SELECT model_code, currency, count() AS requests, sum(cost) ","n":90,"read_rows":70178968,"read_bytes":4263197325,"p50_ms":6775.5,"memory":20100664.52222222}
+{"h":5902408839961125136,"q":"SELECT (SELECT count() FROM token_hub.t_billing_records WHER","n":1,"read_rows":441600001,"read_bytes":39263772826,"p50_ms":16247,"memory":127042862}
+{"h":2757382793065357658,"q":"SELECT DISTINCT org_id FROM token_hub.t_billing_records WHER","n":1,"read_rows":2509612,"read_bytes":40153792,"p50_ms":23,"memory":1383439}
+{"h":7904782852026877169,"q":"SELECT trace_id FROM token_hub.t_billing_records WHERE id % ","n":1,"read_rows":214800000,"read_bytes":1739111748,"p50_ms":251,"memory":1868598}
+{"h":5680427438121084642,"q":"SELECT user_id FROM (SELECT user_id, count() c FROM token_hu","n":1,"read_rows":16736850,"read_bytes":267789600,"p50_ms":120,"memory":50848896}

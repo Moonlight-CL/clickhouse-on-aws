@@ -1,0 +1,44 @@
+<div class="finding"><b>1. 同规格下，EKS 与 EC2 的写入性能基本持平：瓶颈都在数据盘吞吐（gp3 默认 125 MiB/s）。</b>
+W1 服务端批量导入为 24.1 万行/秒，EC2 为 24.7 万行/秒（−2.5%）。W2 批量写入在 c=1/8 时相差不到 4%，c=4/16 时 EKS 反而高 7–16%，这在磁盘排队造成的波动范围内。
+W3 小批量写入、W4 物化视图管道、<code>insert_quorum=2</code> 的差异都在 ±6% 以内。
+两种部署用的是同一种 EBS 卷（gp3、xfs、3000 IOPS / 125 MiB/s）和同样的机型，经 VPC CNI 访问 pod IP 也没有额外的网络跳数，所以写入链路没有可测量的容器开销。
+<br>建议：与 EC2 一样，生产环境把 <code>DataVolumeThroughput</code> 提高到约 300 MiB/s。在 EKS 上，这可以通过更新堆栈参数在线完成（VolumeAttributesClass），不需要重启 pod。</div>
+
+<div class="finding"><b>2. CPU 密集的并发读取比 EC2 低 5–13%，与 pod 可用 CPU 的差距一致。</b>
+c=32 时，Q1–Q6、Q8 的 QPS 比 EC2 低 5–12%，单副本混合负载低 13%。
+原因是 Guaranteed QoS 下 ClickHouse pod 的 CPU 上限为 <b>7.1 vCPU</b>（节点可分配 7.91 vCPU，再减去 DaemonSet 预留 0.8 vCPU），比 EC2 整机的 8 vCPU 少 11%。
+ClickHouse 仍按 <code>max_threads = 8</code> 起线程，CPU 跑满时会被 CFS 配额限流。
+单并发（c=1）的 p50 延迟大多与 EC2 相同或更好（Q1 −9%、Q2 −27%），说明单个查询本身没有变慢，只是总算力少了。
+<br>两副本混合负载为 12.9 QPS，比 EC2 高 8.7%，此时两个副本都没有跑满，CPU 上限不是瓶颈。
+<br>建议：
+<ul>
+<li>读多写少的集群可以选大一号的机型，DaemonSet 的固定开销占比会随之下降；</li>
+<li>或者把 <code>ClickHouseCpu</code> 设为整数，并在 profile 中设置 <code>max_threads</code> 等于这个值，避免被限流。</li>
+</ul></div>
+
+<div class="finding"><b>3. Q7（按 trace_id 点查）c=32 低 32%，主要来自数据布局不同，而不是平台差异。</b>
+这条查询没有可用的索引，会扫描大量 granule。EKS 每次查询平均读约 154 万行，EC2 约 90 万行（clickhouse-benchmark 的 RPS / QPS）。
+两次测试结束时，part 的合并状态不同，跳过的 granule 数也就不同，再叠加第 2 条的 CPU 上限，结果就差了约三分之一。c=1 的 p50 是 26 ms 对 21 ms。
+<br>建议（两种部署都适用）：为 <code>trace_id</code> 加 bloom_filter 跳数索引，见运维手册第 8 节。</div>
+
+<div class="finding"><b>4. 存储大小与压缩比相同（±3%），复制和 Keeper 行为一致。</b>
+每副本压缩后 24.7 GiB，EC2 为 24.0 GiB；压缩比 3.27×，EC2 为 3.36×。差异来自测试结束时 merge 的进度。
+两个副本的行数一致；物化视图管道的逐行哈希校验一致；写入结束后，副本追平的时间也与 EC2 在同一量级。</div>
+
+<div class="finding"><b>5. EKS 方案的运维验证（部署过程中实测）。</b>
+<ul>
+<li>EKS Pod Identity：VPC CNI、EBS CSI、CloudWatch Agent、LB Controller 和 ClickHouse 都通过 Pod Identity 获取凭证，没有 OIDC provider，也没有 IRSA。
+用 Pod Identity 凭证做的全量和增量 <code>BACKUP</code> 都写入了 S3；从增量恢复 510 万行，哈希与原表一致。</li>
+<li>26.8 默认禁止查询中的 S3 使用服务器自身的凭证。备份和恢复语句需要加 <code>s3_allow_server_credentials_in_user_queries = 1</code>，备份脚本已按版本自动添加。EC2 方案在 26.8 上也同样需要。</li>
+<li>CloudWatch 告警：封锁 r2 所在节点并删除其 pod，约 3.5 分钟后 <code>ServerUp</code> 进入 ALARM，SNS 通知发送成功；解除封锁后 pod 在原 AZ 挂回原 EBS 卷，告警恢复。</li>
+<li>堆栈更新（安装器脚本变化，加上 metric_log 的 TTL 配置变化）由 operator 逐个 host 滚动重启。PodDisruptionBudget 的 maxUnavailable=1 生效，数据和 PVC 保持不变。</li>
+</ul></div>
+
+<div class="finding"><b>6. 选型建议。</b>
+EKS 方案的性能与 EC2 处于同一水平：写入几乎相同，CPU 密集的读取约低 10%，这部分可以用更大的机型或整数 CPU 配置弥补。
+它适合已经有 EKS 平台、希望用 Kubernetes 统一运维的团队。代价是：
+<ul>
+<li>EKS 控制面约 $73/月，加 2 台 system 节点；</li>
+<li>多了 operator、add-on 和 Kubernetes 版本这些需要维护的组件。</li>
+</ul>
+没有 Kubernetes 运维能力的团队，EC2 方案的组件更少、单节点算力更完整。</div>

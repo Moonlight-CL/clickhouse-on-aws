@@ -1,0 +1,24 @@
+{"test":"W1","batch":0,"rows":10000000,"seconds":5.962,"ts":"2026-10-13T12:52:56Z"}
+{"test":"W1","batch":1,"rows":10000000,"seconds":17.179,"ts":"2026-10-13T12:53:13Z"}
+{"test":"W1","batch":2,"rows":10000000,"seconds":41.311,"ts":"2026-10-13T12:53:54Z"}
+{"test":"W1","batch":3,"rows":10000000,"seconds":41.396,"ts":"2026-10-13T12:54:35Z"}
+{"test":"W1","batch":4,"rows":10000000,"seconds":45.544,"ts":"2026-10-13T12:55:21Z"}
+{"test":"W1","batch":5,"rows":10000000,"seconds":45.676,"ts":"2026-10-13T12:56:07Z"}
+{"test":"W1","batch":6,"rows":10000000,"seconds":48.552,"ts":"2026-10-13T12:56:55Z"}
+{"test":"W1","batch":7,"rows":10000000,"seconds":59.215,"ts":"2026-10-13T12:57:54Z"}
+{"test":"W1","batch":8,"rows":10000000,"seconds":53.308,"ts":"2026-10-13T12:58:48Z"}
+{"test":"W1","batch":9,"rows":10000000,"seconds":57.304,"ts":"2026-10-13T12:59:45Z"}
+{"test":"W1_total","rows":100000000,"seconds":415.499,"replication_catchup_s":1.222,"stats":{"inserts":10,"written_rows":100000000,"written_bytes":44490092906,"p50_ms":45552.5,"p95_ms":58297.5,"p99_ms":58985.100000000006,"max_ms":59157,"max_memory":6860193759},"ts":"2026-10-13T12:59:47Z"}
+{"test":"files","rows_file_rows":100000,"rows_file_bytes":32688723,"events_file_bytes":126790331,"ts":"2026-10-13T13:03:20Z"}
+{"test":"W2","concurrency":1,"inserts":48,"rows":4800000,"rows_stored":4800000,"seconds":20.382,"replication_catchup_s":1.227,"settings":"","stats":{"inserts":48,"written_rows":4800000,"written_bytes":2135527223,"p50_ms":360.5,"p95_ms":384.65,"p99_ms":388.65,"max_ms":391,"max_memory":415688440},"ts":"2026-10-13T13:03:42Z"}
+{"test":"W2","concurrency":4,"inserts":192,"rows":19200000,"rows_stored":19200000,"seconds":91.501,"replication_catchup_s":0.109,"settings":"","stats":{"inserts":192,"written_rows":19200000,"written_bytes":8542108892,"p50_ms":399,"p95_ms":4164.349999999999,"p99_ms":4369.2699999999995,"max_ms":4654,"max_memory":415673172},"ts":"2026-10-13T13:08:32Z"}
+{"test":"W2","concurrency":8,"inserts":288,"rows":28800000,"rows_stored":28800000,"seconds":115.729,"replication_catchup_s":1.219,"settings":"","stats":{"inserts":288,"written_rows":28800000,"written_bytes":12813163338,"p50_ms":3802.5,"p95_ms":6183.049999999999,"p99_ms":6923,"max_ms":7091,"max_memory":416372554},"ts":"2026-10-13T13:10:50Z"}
+{"test":"W2","concurrency":16,"inserts":288,"rows":28800000,"rows_stored":28800000,"seconds":87.796,"replication_catchup_s":1.218,"settings":"","stats":{"inserts":288,"written_rows":28800000,"written_bytes":12813163338,"p50_ms":4847,"p95_ms":10469.499999999996,"p99_ms":11917.589999999998,"max_ms":12083,"max_memory":415597238},"ts":"2026-10-13T13:12:55Z"}
+{"test":"W2Q","concurrency":8,"inserts":192,"rows":19200000,"rows_stored":19200000,"seconds":77.331,"replication_catchup_s":0.110,"settings":"--insert_quorum 2","stats":{"inserts":192,"written_rows":19200000,"written_bytes":8542108892,"p50_ms":3744.5,"p95_ms":4514.65,"p99_ms":5982.39,"max_ms":6517,"max_memory":416183666},"ts":"2026-10-13T13:15:44Z"}
+{"test":"W3sync","concurrency":8,"inserts":400,"rows":400000,"rows_stored":400000,"seconds":26.356,"replication_catchup_s":1.217,"settings":"","stats":{"inserts":400,"written_rows":400000,"written_bytes":177477600,"p50_ms":457,"p95_ms":511,"p99_ms":524.01,"max_ms":559,"max_memory":3086143},"ts":"2026-10-13T13:16:38Z"}
+{"test":"W3async","concurrency":16,"inserts":1600,"rows":1600000,"rows_stored":1600000,"seconds":61.225,"replication_catchup_s":0.111,"settings":"--async_insert 1 --wait_for_async_insert 1","stats":{"inserts":1600,"written_rows":1600000,"written_bytes":709910400,"p50_ms":560,"p95_ms":648.05,"p99_ms":682.01,"max_ms":1279,"max_memory":3086959},"ts":"2026-10-13T13:17:40Z"}
+{"test":"W4","concurrency":1,"inserts":24,"rows":2400000,"rows_stored":2400000,"seconds":103.815,"replication_catchup_s":0.110,"settings":"","stats":{"inserts":24,"written_rows":4800000,"written_bytes":3725371591,"p50_ms":4249,"p95_ms":4299.55,"p99_ms":4329.26,"max_ms":4338,"max_memory":422831505},"ts":"2026-10-13T13:19:24Z"}
+{"test":"W4","concurrency":4,"inserts":48,"rows":4800000,"rows_stored":4800000,"seconds":52.630,"replication_catchup_s":1.219,"settings":"","stats":{"inserts":48,"written_rows":9600000,"written_bytes":7450896447,"p50_ms":4283,"p95_ms":4388.3,"p99_ms":4577.54,"max_ms":4586,"max_memory":423908392},"ts":"2026-10-13T13:20:19Z"}
+{"test":"W4","concurrency":8,"inserts":48,"rows":4800000,"rows_stored":4800000,"seconds":27.258,"replication_catchup_s":1.220,"settings":"","stats":{"inserts":48,"written_rows":9600000,"written_bytes":7450682092,"p50_ms":4370.5,"p95_ms":4630.15,"p99_ms":4653.18,"max_ms":4656,"max_memory":422854532},"ts":"2026-10-13T13:20:48Z"}
+{"test":"W4_check","rows_added":12000000,"check":{"mv_rows":12000000,"mv_hash":14129277783919779003,"expected_hash":14129277783919779003,"identical":1},"ts":"2026-10-13T13:21:01Z"}
+{"test":"final_replication_catchup","seconds":0.111,"ts":"2026-10-13T13:21:01Z"}

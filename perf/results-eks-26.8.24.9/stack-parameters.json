@@ -1,0 +1,158 @@
+[
+    {
+        "ParameterKey": "EksAdminRoleArn",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "ClientCidr",
+        "ParameterValue": "172.31.0.0/16"
+    },
+    {
+        "ParameterKey": "GrafanaAuthProvider",
+        "ParameterValue": "SAML"
+    },
+    {
+        "ParameterKey": "KeeperMemory",
+        "ParameterValue": "auto"
+    },
+    {
+        "ParameterKey": "EksPublicAccessCidrs",
+        "ParameterValue": "203.0.113.10/32"
+    },
+    {
+        "ParameterKey": "SubnetIds",
+        "ParameterValue": "subnet-0aaaaaaaaaaaaaaa1,subnet-0aaaaaaaaaaaaaaa2,subnet-0aaaaaaaaaaaaaaa3"
+    },
+    {
+        "ParameterKey": "ShardCount",
+        "ParameterValue": "1"
+    },
+    {
+        "ParameterKey": "ClickHouseMemory",
+        "ParameterValue": "auto"
+    },
+    {
+        "ParameterKey": "NodeRootVolumeSize",
+        "ParameterValue": "30"
+    },
+    {
+        "ParameterKey": "CreateGrafanaWorkspace",
+        "ParameterValue": "true"
+    },
+    {
+        "ParameterKey": "VpcCidr",
+        "ParameterValue": "10.20.0.0/16"
+    },
+    {
+        "ParameterKey": "ClickHouseVersion",
+        "ParameterValue": "26.8.24.9"
+    },
+    {
+        "ParameterKey": "KeeperInstanceType",
+        "ParameterValue": "m7g.large"
+    },
+    {
+        "ParameterKey": "BackupRetentionDays",
+        "ParameterValue": "35"
+    },
+    {
+        "ParameterKey": "ClusterName",
+        "ParameterValue": "tokenhub"
+    },
+    {
+        "ParameterKey": "DataVolumeSize",
+        "ParameterValue": "100"
+    },
+    {
+        "ParameterKey": "ClientLoadBalancer",
+        "ParameterValue": "true"
+    },
+    {
+        "ParameterKey": "EksPublicEndpoint",
+        "ParameterValue": "true"
+    },
+    {
+        "ParameterKey": "MultiAZ",
+        "ParameterValue": "true"
+    },
+    {
+        "ParameterKey": "SystemLogRetentionDays",
+        "ParameterValue": "30"
+    },
+    {
+        "ParameterKey": "LogRetentionDays",
+        "ParameterValue": "30"
+    },
+    {
+        "ParameterKey": "ClickHouseInstanceType",
+        "ParameterValue": "m7g.2xlarge"
+    },
+    {
+        "ParameterKey": "Monitoring",
+        "ParameterValue": "CloudWatch"
+    },
+    {
+        "ParameterKey": "KubernetesVersion",
+        "ParameterValue": "1.36"
+    },
+    {
+        "ParameterKey": "KeeperCount",
+        "ParameterValue": "3"
+    },
+    {
+        "ParameterKey": "EnableBackup",
+        "ParameterValue": "true"
+    },
+    {
+        "ParameterKey": "ReplicaCount",
+        "ParameterValue": "2"
+    },
+    {
+        "ParameterKey": "ClickHouseCpu",
+        "ParameterValue": "auto"
+    },
+    {
+        "ParameterKey": "KeeperCpu",
+        "ParameterValue": "auto"
+    },
+    {
+        "ParameterKey": "DiskUsageAlarmPercent",
+        "ParameterValue": "80"
+    },
+    {
+        "ParameterKey": "CreateVpc",
+        "ParameterValue": "false"
+    },
+    {
+        "ParameterKey": "VpcId",
+        "ParameterValue": "vpc-0123456789abcdef0"
+    },
+    {
+        "ParameterKey": "DataVolumeIops",
+        "ParameterValue": "3000"
+    },
+    {
+        "ParameterKey": "DataVolumeThroughput",
+        "ParameterValue": "125"
+    },
+    {
+        "ParameterKey": "KeeperDataVolumeSize",
+        "ParameterValue": "20"
+    },
+    {
+        "ParameterKey": "AlarmEmail",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "SystemInstanceType",
+        "ParameterValue": "m7g.large"
+    },
+    {
+        "ParameterKey": "BackupTimeUTC",
+        "ParameterValue": "03:00"
+    },
+    {
+        "ParameterKey": "NatGateways",
+        "ParameterValue": "PerAz"
+    }
+]

@@ -1,0 +1,12 @@
+<p>部署方式：本仓库的 EKS 一键模版 <code>templates/clickhouse-eks.template.json</code>，参数见 <code>examples/eks-perf-params.json</code>。ClickHouseVersion = 26.8.24.9，EKS 1.36，Altinity clickhouse-operator 0.27.4。
+集群部署在 EC2 测试所用的 VPC 和 3 个私有子网中（CreateVpc=false），节点规格与 EC2 测试相同：
+<ul>
+<li>ClickHouse：每个副本一个独立的托管节点组（m7g.2xlarge），节点带 taint，每个节点只运行一个 ClickHouse pod。
+pod 为 Guaranteed QoS，资源为 7.1 vCPU / 27.75 GiB（节点可分配资源减去 DaemonSet 预留；EC2 为整机 8 vCPU / 32 GiB）。</li>
+<li>Keeper：3 个 m7g.large，各在一个 AZ。另有 2 台 m7g.large system 节点，运行 operator、CoreDNS、各类 controller 和 CloudWatch 指标上报。</li>
+<li>数据盘：EBS CSI 动态创建的 PVC，100 GiB gp3、3000 IOPS / 125 MiB/s，加密，xfs，与 EC2 测试相同。</li>
+<li>测试期间 Monitoring=CloudWatch（Container Insights 加 ClickHouse 指标上报），EnableBackup=true（压测期间没有执行备份）。</li>
+</ul>
+副本跨 AZ（us-west-2a / us-west-2b）。压测客户端与 EC2 测试相同：同 VPC 内一台独立的 m7g.2xlarge（us-west-2a），用原生协议 9000 端口<b>直连 pod IP</b>（VPC CNI），不经过 NLB；
+写入在两个副本之间交替分发，读取默认只打 ch-s1-r1（"2 replicas" 场景除外）。脚本、表结构、数据量和查询与 EC2 测试完全相同。
+基准对比数据：<code>perf/results</code>（EC2，ClickHouse 26.8.24.9）。</p>

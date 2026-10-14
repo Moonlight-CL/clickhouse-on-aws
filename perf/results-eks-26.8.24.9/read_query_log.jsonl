@@ -1,0 +1,13 @@
+{"h":5727537833147037449,"q":"SELECT provider_id, count() AS requests, countIf(status != '","n":3951,"read_rows":2449280,"read_bytes":73405817,"p50_ms":112,"memory":15127211.72133637}
+{"h":14604053687366715537,"q":"SELECT * FROM token_hub.t_billing_records_mv WHERE trace_id ","n":3368,"read_rows":5456461.247624703,"read_bytes":214157761.22980997,"p50_ms":152,"memory":21313136.752078384}
+{"h":15568538692644343734,"q":"SELECT id, created_at, model_code, input_tokens, output_toke","n":2536,"read_rows":16070149.148659306,"read_bytes":143387093.23304418,"p50_ms":199,"memory":5433729.733832807}
+{"h":2930940415741616185,"q":"SELECT toStartOfHour(created_at) AS h, model_code, count() A","n":1530,"read_rows":2397646,"read_bytes":142913752,"p50_ms":305,"memory":39473719.95555556}
+{"h":6699712034752466927,"q":"SELECT toDate(created_at) AS d, model_code, count() AS reque","n":876,"read_rows":70257105.57762557,"read_bytes":644781903.0148401,"p50_ms":945,"memory":10864881.547945205}
+{"h":2809887207380997743,"q":"SELECT model_code, currency, count() AS requests, sum(input_","n":472,"read_rows":48625357.050847456,"read_bytes":1924479286.9894068,"p50_ms":3187.5,"memory":22837767.22033898}
+{"h":13760762752697465117,"q":"SELECT user_id, count() AS requests, sum(cost) AS total_cost","n":438,"read_rows":16397886,"read_bytes":803496414,"p50_ms":1181,"memory":91318206.38127854}
+{"h":5138692925915076805,"q":"SELECT model_code, currency, count() AS requests, sum(cost) ","n":96,"read_rows":70190319,"read_bytes":3561980254,"p50_ms":6531.5,"memory":27846033.6875}
+{"h":5314528503802651617,"q":"SELECT count() FROM token_hub.t_billing_records","n":41,"read_rows":1,"read_bytes":16,"p50_ms":1,"memory":134513.9512195122}
+{"h":5680427438121084642,"q":"SELECT user_id FROM (SELECT user_id, count() c FROM token_hu","n":2,"read_rows":16739334,"read_bytes":267829344,"p50_ms":142,"memory":53332036}
+{"h":7904782852026877169,"q":"SELECT trace_id FROM token_hub.t_billing_records WHERE id % ","n":2,"read_rows":108805857.5,"read_bytes":889914465,"p50_ms":2656.5,"memory":1935042}
+{"h":2757382793065357658,"q":"SELECT DISTINCT org_id FROM token_hub.t_billing_records WHER","n":2,"read_rows":2498589,"read_bytes":39977424,"p50_ms":21,"memory":1927162.5}
+{"h":5902408839961125136,"q":"SELECT (SELECT count() FROM token_hub.t_billing_records WHER","n":1,"read_rows":74344987,"read_bytes":11012873667,"p50_ms":7665,"memory":155087363}

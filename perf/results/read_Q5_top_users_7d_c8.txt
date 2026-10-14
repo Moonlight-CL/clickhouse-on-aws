@@ -1,0 +1,23 @@
+Loaded 1 queries.
+
+Queries executed: 156.
+
+ch-s1-r1.tokenhub.clickhouse.internal:9000, queries: 156, QPS: 7.519, RPS: 123552169.329, MiB/s: 5772.671, result RPS: 751.864, result MiB/s: 0.023.
+
+0%		0.403 sec.	
+10%		0.952 sec.	
+20%		0.983 sec.	
+30%		1.008 sec.	
+40%		1.027 sec.	
+50%		1.046 sec.	
+60%		1.061 sec.	
+70%		1.091 sec.	
+80%		1.132 sec.	
+90%		1.175 sec.	
+95%		1.233 sec.	
+99%		1.356 sec.	
+99.9%		1.465 sec.	
+99.99%		1.465 sec.	
+
+
+Stopping launch of queries. Requested time limit 20 seconds is exhausted.

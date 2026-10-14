@@ -1,0 +1,76 @@
+[
+    {
+        "ParameterKey": "ClientCidr",
+        "ParameterValue": "172.31.0.0/16"
+    },
+    {
+        "ParameterKey": "KeeperCount",
+        "ParameterValue": "3"
+    },
+    {
+        "ParameterKey": "ReplicaCount",
+        "ParameterValue": "2"
+    },
+    {
+        "ParameterKey": "Arm64AmiId",
+        "ParameterValue": "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64",
+        "ResolvedValue": "ami-0e0c5ffb85283cc7e"
+    },
+    {
+        "ParameterKey": "SubnetIds",
+        "ParameterValue": "subnet-0aaaaaaaaaaaaaaa1,subnet-0aaaaaaaaaaaaaaa2,subnet-0aaaaaaaaaaaaaaa3"
+    },
+    {
+        "ParameterKey": "ShardCount",
+        "ParameterValue": "1"
+    },
+    {
+        "ParameterKey": "X86AmiId",
+        "ParameterValue": "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64",
+        "ResolvedValue": "ami-071672625ad35d880"
+    },
+    {
+        "ParameterKey": "VpcId",
+        "ParameterValue": "vpc-0123456789abcdef0"
+    },
+    {
+        "ParameterKey": "SystemVolumeSize",
+        "ParameterValue": "30"
+    },
+    {
+        "ParameterKey": "DataVolumeIops",
+        "ParameterValue": "3000"
+    },
+    {
+        "ParameterKey": "DataVolumeThroughput",
+        "ParameterValue": "125"
+    },
+    {
+        "ParameterKey": "KeeperDataVolumeSize",
+        "ParameterValue": "20"
+    },
+    {
+        "ParameterKey": "ClickHouseVersion",
+        "ParameterValue": "25.8.33.6"
+    },
+    {
+        "ParameterKey": "KeeperInstanceType",
+        "ParameterValue": "m7g.large"
+    },
+    {
+        "ParameterKey": "ClusterName",
+        "ParameterValue": "tokenhub"
+    },
+    {
+        "ParameterKey": "DataVolumeSize",
+        "ParameterValue": "100"
+    },
+    {
+        "ParameterKey": "MultiAZ",
+        "ParameterValue": "true"
+    },
+    {
+        "ParameterKey": "ClickHouseInstanceType",
+        "ParameterValue": "m7g.2xlarge"
+    }
+]

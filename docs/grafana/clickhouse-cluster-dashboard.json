@@ -1,0 +1,100 @@
+{
+  "__inputs": [
+    { "name": "DS_PROMETHEUS", "label": "Amazon Managed Prometheus", "type": "datasource", "pluginId": "prometheus", "pluginName": "Prometheus" }
+  ],
+  "title": "ClickHouse cluster (Amazon Managed Prometheus)",
+  "uid": "clickhouse-on-aws",
+  "tags": ["clickhouse", "clickhouse-on-aws"],
+  "timezone": "utc",
+  "schemaVersion": 39,
+  "refresh": "1m",
+  "time": { "from": "now-6h", "to": "now" },
+  "templating": {
+    "list": [
+      { "name": "datasource", "type": "datasource", "query": "prometheus", "current": {}, "hide": 0, "label": "Data source" },
+      {
+        "name": "cluster", "type": "query", "label": "Cluster (stack)", "refresh": 2,
+        "datasource": { "type": "prometheus", "uid": "${datasource}" },
+        "query": { "query": "label_values(up, cluster)", "refId": "cluster" },
+        "definition": "label_values(up, cluster)"
+      }
+    ]
+  },
+  "panels": [
+    { "id": 1, "type": "stat", "title": "ClickHouse servers up", "gridPos": { "x": 0, "y": 0, "w": 4, "h": 4 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [{ "refId": "A", "instant": true, "expr": "count(up{cluster=\"$cluster\", job=\"clickhouse\"} == 1)" }] },
+    { "id": 2, "type": "stat", "title": "Keeper nodes up", "gridPos": { "x": 4, "y": 0, "w": 4, "h": 4 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [{ "refId": "A", "instant": true, "expr": "count(up{cluster=\"$cluster\", job=\"keeper\"} == 1)" }] },
+    { "id": 3, "type": "stat", "title": "Keeper leader", "gridPos": { "x": 8, "y": 0, "w": 4, "h": 4 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [{ "refId": "A", "instant": true, "legendFormat": "{{node}}", "expr": "max by (node) (ClickHouseAsyncMetrics_KeeperIsLeader{cluster=\"$cluster\"} + ClickHouseAsyncMetrics_KeeperIsStandalone{cluster=\"$cluster\"}) == 1" }] },
+    { "id": 4, "type": "stat", "title": "Read-only replicas", "gridPos": { "x": 12, "y": 0, "w": 4, "h": 4 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [{ "refId": "A", "instant": true, "expr": "sum(ClickHouseMetrics_ReadonlyReplica{cluster=\"$cluster\"})" }] },
+    { "id": 5, "type": "stat", "title": "Hours since last backup", "gridPos": { "x": 16, "y": 0, "w": 8, "h": 4 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [{ "refId": "A", "instant": true, "legendFormat": "{{node}}", "expr": "(time() - max by (node) (clickhouse_backup_last_success_timestamp_seconds{cluster=\"$cluster\"})) / 3600" }] },
+
+    { "id": 10, "type": "timeseries", "title": "Queries / s", "gridPos": { "x": 0, "y": 4, "w": 8, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [
+        { "refId": "A", "legendFormat": "{{node}} select", "expr": "sum by (node) (rate(ClickHouseProfileEvents_SelectQuery{cluster=\"$cluster\"}[5m]))" },
+        { "refId": "B", "legendFormat": "{{node}} insert", "expr": "sum by (node) (rate(ClickHouseProfileEvents_InsertQuery{cluster=\"$cluster\"}[5m]))" },
+        { "refId": "C", "legendFormat": "{{node}} failed", "expr": "sum by (node) (rate(ClickHouseProfileEvents_FailedQuery{cluster=\"$cluster\"}[5m]))" }
+      ] },
+    { "id": 11, "type": "timeseries", "title": "Inserted rows / s", "gridPos": { "x": 8, "y": 4, "w": 8, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [{ "refId": "A", "legendFormat": "{{node}}", "expr": "sum by (node) (rate(ClickHouseProfileEvents_InsertedRows{cluster=\"$cluster\"}[5m]))" }] },
+    { "id": 12, "type": "timeseries", "title": "Running queries / merges", "gridPos": { "x": 16, "y": 4, "w": 8, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [
+        { "refId": "A", "legendFormat": "{{node}} queries", "expr": "ClickHouseMetrics_Query{cluster=\"$cluster\"}" },
+        { "refId": "B", "legendFormat": "{{node}} merges", "expr": "ClickHouseMetrics_Merge{cluster=\"$cluster\"}" }
+      ] },
+
+    { "id": 20, "type": "timeseries", "title": "CPU used %", "gridPos": { "x": 0, "y": 12, "w": 8, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "fieldConfig": { "defaults": { "unit": "percent", "min": 0, "max": 100 }, "overrides": [] },
+      "targets": [{ "refId": "A", "legendFormat": "{{node}}", "expr": "100 * (1 - avg by (node) (rate(node_cpu_seconds_total{cluster=\"$cluster\", mode=\"idle\"}[5m]))) or 100 * max by (node) (ClickHouseAsyncMetrics_OSUserTimeNormalized{cluster=\"$cluster\"} + ClickHouseAsyncMetrics_OSSystemTimeNormalized{cluster=\"$cluster\"})" }] },
+    { "id": 21, "type": "timeseries", "title": "ClickHouse memory (tracked)", "gridPos": { "x": 8, "y": 12, "w": 8, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "fieldConfig": { "defaults": { "unit": "bytes" }, "overrides": [] },
+      "targets": [{ "refId": "A", "legendFormat": "{{node}}", "expr": "ClickHouseMetrics_MemoryTracking{cluster=\"$cluster\"}" }] },
+    { "id": 22, "type": "timeseries", "title": "Data volume used %", "gridPos": { "x": 16, "y": 12, "w": 8, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "fieldConfig": { "defaults": { "unit": "percent", "min": 0, "max": 100 }, "overrides": [] },
+      "targets": [{ "refId": "A", "legendFormat": "{{node}}", "expr": "100 * (1 - node_filesystem_avail_bytes{cluster=\"$cluster\", mountpoint=\"/var/lib/clickhouse\"} / node_filesystem_size_bytes{cluster=\"$cluster\", mountpoint=\"/var/lib/clickhouse\"}) or 100 * (1 - ClickHouseAsyncMetrics_DiskAvailable{cluster=\"$cluster\", disk=\"default\"} / ClickHouseAsyncMetrics_DiskTotal{cluster=\"$cluster\", disk=\"default\"})" }] },
+
+    { "id": 30, "type": "timeseries", "title": "Data volume throughput (written / read)", "gridPos": { "x": 0, "y": 20, "w": 8, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "fieldConfig": { "defaults": { "unit": "Bps" }, "overrides": [] },
+      "targets": [
+        { "refId": "A", "legendFormat": "{{node}} write", "expr": "sum by (node) (rate(node_disk_written_bytes_total{cluster=\"$cluster\", device=\"nvme1n1\"}[5m])) or label_replace(sum by (pod) (rate(container_fs_writes_bytes_total{cluster=\"$cluster\", namespace=\"clickhouse\", container=~\"clickhouse|clickhouse-keeper\"}[5m])), \"node\", \"$1\", \"pod\", \"(.+)\")" },
+        { "refId": "B", "legendFormat": "{{node}} read", "expr": "sum by (node) (rate(node_disk_read_bytes_total{cluster=\"$cluster\", device=\"nvme1n1\"}[5m])) or label_replace(sum by (pod) (rate(container_fs_reads_bytes_total{cluster=\"$cluster\", namespace=\"clickhouse\", container=~\"clickhouse|clickhouse-keeper\"}[5m])), \"node\", \"$1\", \"pod\", \"(.+)\")" }
+      ] },
+    { "id": 31, "type": "timeseries", "title": "Max active parts in a partition", "gridPos": { "x": 8, "y": 20, "w": 8, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [{ "refId": "A", "legendFormat": "{{node}}", "expr": "ClickHouseAsyncMetrics_MaxPartCountForPartition{cluster=\"$cluster\"}" }] },
+    { "id": 32, "type": "timeseries", "title": "Replication queue / delay (s)", "gridPos": { "x": 16, "y": 20, "w": 8, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [
+        { "refId": "A", "legendFormat": "{{node}} queue", "expr": "ClickHouseAsyncMetrics_ReplicasMaxQueueSize{cluster=\"$cluster\"}" },
+        { "refId": "B", "legendFormat": "{{node}} delay s", "expr": "ClickHouseAsyncMetrics_ReplicasMaxAbsoluteDelay{cluster=\"$cluster\"}" }
+      ] },
+
+    { "id": 40, "type": "timeseries", "title": "Keeper avg latency (ms) / outstanding requests", "gridPos": { "x": 0, "y": 28, "w": 12, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [
+        { "refId": "A", "legendFormat": "{{node}} latency", "expr": "ClickHouseAsyncMetrics_KeeperAvgLatency{cluster=\"$cluster\"}" },
+        { "refId": "B", "legendFormat": "{{node}} outstanding", "expr": "ClickHouseMetrics_KeeperOutstandingRequests{cluster=\"$cluster\"}" }
+      ] },
+    { "id": 41, "type": "timeseries", "title": "Delayed / rejected inserts", "gridPos": { "x": 12, "y": 28, "w": 12, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "targets": [
+        { "refId": "A", "legendFormat": "{{node}} delayed", "expr": "ClickHouseMetrics_DelayedInserts{cluster=\"$cluster\"}" },
+        { "refId": "B", "legendFormat": "{{node}} rejected/s", "expr": "rate(ClickHouseProfileEvents_RejectedInserts{cluster=\"$cluster\"}[5m])" }
+      ] }
+  ]
+}

@@ -1,0 +1,23 @@
+Loaded 200 queries.
+
+Queries executed: 67 (33.5%).
+
+172.31.98.225:9000, queries: 67, QPS: 3.291, RPS: 217214125.327, MiB/s: 6211.151, result RPS: 78.992, result MiB/s: 0.004.
+
+0%		0.255 sec.	
+10%		0.283 sec.	
+20%		0.288 sec.	
+30%		0.293 sec.	
+40%		0.295 sec.	
+50%		0.298 sec.	
+60%		0.302 sec.	
+70%		0.307 sec.	
+80%		0.318 sec.	
+90%		0.327 sec.	
+95%		0.352 sec.	
+99%		0.367 sec.	
+99.9%		0.367 sec.	
+99.99%		0.367 sec.	
+
+
+Stopping launch of queries. Requested time limit 20 seconds is exhausted.

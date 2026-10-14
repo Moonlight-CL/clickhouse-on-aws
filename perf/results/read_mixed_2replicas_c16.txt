@@ -1,0 +1,24 @@
+Loaded 604 queries.
+
+Queries executed: 736 (121.8543046357616%).
+
+ch-s1-r1.tokenhub.clickhouse.internal:9000, queries: 384, QPS: 6.209, RPS: 264536945.882, MiB/s: 5507.783, result RPS: 580.148, result MiB/s: 0.033.
+ch-s1-r2.tokenhub.clickhouse.internal:9000, queries: 352, QPS: 5.691, RPS: 284690820.303, MiB/s: 5176.638, result RPS: 559.614, result MiB/s: 0.031.
+
+0%		0.030 sec.	0.030 sec.	
+10%		0.099 sec.	0.254 sec.	
+20%		0.246 sec.	0.415 sec.	
+30%		0.369 sec.	0.519 sec.	
+40%		0.468 sec.	0.600 sec.	
+50%		0.599 sec.	0.787 sec.	
+60%		0.791 sec.	1.317 sec.	
+70%		1.290 sec.	1.539 sec.	
+80%		1.730 sec.	2.901 sec.	
+90%		2.943 sec.	4.020 sec.	
+95%		3.676 sec.	4.716 sec.	
+99%		4.400 sec.	7.444 sec.	
+99.9%		7.711 sec.	10.050 sec.	
+99.99%		7.711 sec.	10.050 sec.	
+
+Difference at 99.5% confidence: mean difference is 0.48468059575331424, but confidence interval is 0.32906958556906374
+Stopping launch of queries. Requested time limit 60 seconds is exhausted.

@@ -1,0 +1,139 @@
+[
+ {
+  "id": "vol-00000000000000020",
+  "size": 30,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000011",
+  "device": "/dev/xvda",
+  "pvc": null
+ },
+ {
+  "id": "vol-00000000000000012",
+  "size": 20,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000006",
+  "device": "/dev/sdb",
+  "pvc": "keeper-data-chk-keeper-keeper-0-1-0",
+  "k8sDevice": "/dev/xvdaa"
+ },
+ {
+  "id": "vol-00000000000000022",
+  "size": 100,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000012",
+  "device": "/dev/sdb",
+  "pvc": "data-chi-tokenhub-tokenhub-0-1-0",
+  "k8sDevice": "/dev/xvdaa"
+ },
+ {
+  "id": "vol-00000000000000017",
+  "size": 20,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000009",
+  "device": "/dev/sdb",
+  "pvc": "keeper-data-chk-keeper-keeper-0-0-0",
+  "k8sDevice": "/dev/xvdaa"
+ },
+ {
+  "id": "vol-00000000000000015",
+  "size": 30,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000008",
+  "device": "/dev/xvda",
+  "pvc": null
+ },
+ {
+  "id": "vol-00000000000000018",
+  "size": 30,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000010",
+  "device": "/dev/xvda",
+  "pvc": null
+ },
+ {
+  "id": "vol-00000000000000013",
+  "size": 30,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000007",
+  "device": "/dev/xvda",
+  "pvc": null
+ },
+ {
+  "id": "vol-00000000000000014",
+  "size": 20,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000007",
+  "device": "/dev/sdb",
+  "pvc": "keeper-data-chk-keeper-keeper-0-2-0",
+  "k8sDevice": "/dev/xvdaa"
+ },
+ {
+  "id": "vol-00000000000000016",
+  "size": 30,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000009",
+  "device": "/dev/xvda",
+  "pvc": null
+ },
+ {
+  "id": "vol-00000000000000019",
+  "size": 100,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000010",
+  "device": "/dev/sdb",
+  "pvc": "data-chi-tokenhub-tokenhub-0-0-0",
+  "k8sDevice": "/dev/xvdaa"
+ },
+ {
+  "id": "vol-00000000000000021",
+  "size": 30,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000012",
+  "device": "/dev/xvda",
+  "pvc": null
+ },
+ {
+  "id": "vol-00000000000000011",
+  "size": 30,
+  "type": "gp3",
+  "iops": 3000,
+  "throughput": 125,
+  "encrypted": true,
+  "instance": "i-00000000000000006",
+  "device": "/dev/xvda",
+  "pvc": null
+ }
+]

@@ -1,0 +1,20 @@
+{"h":14604053687366715537,"q":"SELECT * FROM token_hub.t_billing_records_mv WHERE trace_id ","n":5011,"read_rows":3797561.4466174417,"read_bytes":149993991.75533825,"p50_ms":117,"memory":20522238.412093394}
+{"h":5727537833147037449,"q":"SELECT provider_id, count() AS requests, countIf(status != '","n":4258,"read_rows":2466372.4194457494,"read_bytes":73708354.22123063,"p50_ms":104,"memory":16175497.598168153}
+{"h":15568538692644343734,"q":"SELECT id, created_at, model_code, input_tokens, output_toke","n":2477,"read_rows":16058617.974969722,"read_bytes":143220166.6552281,"p50_ms":227,"memory":5590856.606782398}
+{"h":2930940415741616185,"q":"SELECT toStartOfHour(created_at) AS h, model_code, count() A","n":1654,"read_rows":2407547,"read_bytes":143520331.57859734,"p50_ms":279.5,"memory":38022333.34038694}
+{"h":6699712034752466927,"q":"SELECT toDate(created_at) AS d, model_code, count() AS reque","n":901,"read_rows":70242785.64927858,"read_bytes":649948153.0011098,"p50_ms":1108,"memory":14341164.95782464}
+{"h":2809887207380997743,"q":"SELECT model_code, currency, count() AS requests, sum(input_","n":494,"read_rows":49869968.427125506,"read_bytes":2044679577.4878542,"p50_ms":3274.5,"memory":19275803.89473684}
+{"h":13760762752697465117,"q":"SELECT user_id, count() AS requests, sum(cost) AS total_cost","n":471,"read_rows":16415387.33970276,"read_bytes":804224940.1974522,"p50_ms":1058,"memory":87074374.6029724}
+{"h":5138692925915076805,"q":"SELECT model_code, currency, count() AS requests, sum(cost) ","n":115,"read_rows":69890327.53043479,"read_bytes":3546760574.226087,"p50_ms":5819,"memory":26874670.704347827}
+{"h":5314528503802651617,"q":"SELECT count() FROM token_hub.t_billing_records","n":57,"read_rows":1,"read_bytes":16,"p50_ms":1,"memory":133518.31578947368}
+{"h":8432249092597613553,"q":"SELECT toDate(created_at) AS d, model_code, count() AS reque","n":3,"read_rows":35070353,"read_bytes":330507048.6666667,"p50_ms":469,"memory":14709031.333333334}
+{"h":1393088639190577907,"q":"SELECT model_code, currency, count() AS requests, sum(input_","n":3,"read_rows":35018354,"read_bytes":1608520795.3333333,"p50_ms":228,"memory":15504135.333333334}
+{"h":5680427438121084642,"q":"SELECT user_id FROM (SELECT user_id, count() c FROM token_hu","n":2,"read_rows":12586810,"read_bytes":201388960,"p50_ms":113,"memory":61449787}
+{"h":2757382793065357658,"q":"SELECT DISTINCT org_id FROM token_hub.t_billing_records WHER","n":2,"read_rows":1889931.5,"read_bytes":30238904,"p50_ms":27,"memory":3155904.5}
+{"h":7904782852026877169,"q":"SELECT trace_id FROM token_hub.t_billing_records WHERE id % ","n":2,"read_rows":161880715.5,"read_bytes":1313441584.5,"p50_ms":3929.5,"memory":5814195.5}
+{"h":9310506184262011651,"q":"SELECT user_id, count() AS requests, sum(cost) AS cost, sum(","n":1,"read_rows":8235667,"read_bytes":403547683,"p50_ms":167,"memory":183320101}
+{"h":3444809208355643518,"q":"SELECT (SELECT sum(cityHash64(toString(billing_mode))) FROM ","n":1,"read_rows":2001,"read_bytes":16065,"p50_ms":16,"memory":2662958}
+{"h":2713177341129307540,"q":"SELECT (SELECT sum(cityHash64(toString(user_header_req_id)))","n":1,"read_rows":2001,"read_bytes":37995,"p50_ms":16,"memory":2663438}
+{"h":17352705426933675363,"q":"SELECT (SELECT sum(cityHash64(toString(currency))) FROM toke","n":1,"read_rows":2001,"read_bytes":17129,"p50_ms":17,"memory":2663134}
+{"h":17753467177671774701,"q":"SELECT (SELECT sum(cityHash64(toString(kafka_meta_event_sour","n":1,"read_rows":2001,"read_bytes":28999,"p50_ms":17,"memory":2664334}
+{"h":3813344751010414548,"q":"SELECT (SELECT sum(cityHash64(toString(discount_rate))) FROM","n":1,"read_rows":2001,"read_bytes":20001,"p50_ms":16,"memory":2662990}

@@ -1,0 +1,97 @@
+[
+    {
+        "id": "i-00000000000000013",
+        "type": "m7g.large",
+        "az": "us-west-2c",
+        "arch": "arm64",
+        "ip": "172.31.81.144",
+        "name": "tokenhub-keeper-3",
+        "role": "Keeper3",
+        "volumes": [
+            {
+                "device": "/dev/xvda",
+                "id": "vol-00000000000000023"
+            },
+            {
+                "device": "/dev/sdb",
+                "id": "vol-00000000000000024"
+            }
+        ]
+    },
+    {
+        "id": "i-00000000000000014",
+        "type": "m7g.large",
+        "az": "us-west-2b",
+        "arch": "arm64",
+        "ip": "172.31.70.254",
+        "name": "tokenhub-keeper-2",
+        "role": "Keeper2",
+        "volumes": [
+            {
+                "device": "/dev/xvda",
+                "id": "vol-00000000000000025"
+            },
+            {
+                "device": "/dev/sdb",
+                "id": "vol-00000000000000026"
+            }
+        ]
+    },
+    {
+        "id": "i-00000000000000015",
+        "type": "m7g.2xlarge",
+        "az": "us-west-2a",
+        "arch": "arm64",
+        "ip": "172.31.96.198",
+        "name": "tokenhub-ch-s1-r1",
+        "role": "ChS1R1",
+        "volumes": [
+            {
+                "device": "/dev/xvda",
+                "id": "vol-00000000000000027"
+            },
+            {
+                "device": "/dev/sdb",
+                "id": "vol-00000000000000028"
+            }
+        ]
+    },
+    {
+        "id": "i-00000000000000016",
+        "type": "m7g.large",
+        "az": "us-west-2a",
+        "arch": "arm64",
+        "ip": "172.31.101.172",
+        "name": "tokenhub-keeper-1",
+        "role": "Keeper1",
+        "volumes": [
+            {
+                "device": "/dev/xvda",
+                "id": "vol-00000000000000029"
+            },
+            {
+                "device": "/dev/sdb",
+                "id": "vol-00000000000000030"
+            }
+        ]
+    },
+    {
+        "id": "i-00000000000000017",
+        "type": "m7g.2xlarge",
+        "az": "us-west-2b",
+        "arch": "arm64",
+        "ip": "172.31.67.214",
+        "name": "tokenhub-ch-s1-r2",
+        "role": "ChS1R2",
+        "volumes": [
+            {
+                "device": "/dev/xvda",
+                "id": "vol-00000000000000031"
+            },
+            {
+                "device": "/dev/sdb",
+                "id": "vol-00000000000000032"
+            }
+        ]
+    }
+]

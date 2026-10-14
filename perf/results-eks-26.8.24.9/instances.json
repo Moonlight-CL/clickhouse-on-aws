@@ -1,0 +1,134 @@
+[
+ {
+  "id": "i-00000000000000006",
+  "type": "m7g.large",
+  "az": "us-west-2b",
+  "arch": "arm64",
+  "ip": "172.31.75.139",
+  "name": "ch-eks-keeper",
+  "nodegroup": "KeeperNodeGroup2-7TvpY02G0Rek",
+  "volumes": [
+   {
+    "device": "/dev/xvda",
+    "id": "vol-00000000000000011"
+   },
+   {
+    "device": "/dev/xvdaa",
+    "id": "vol-00000000000000012"
+   }
+  ],
+  "role": "Keeper2"
+ },
+ {
+  "id": "i-00000000000000007",
+  "type": "m7g.large",
+  "az": "us-west-2c",
+  "arch": "arm64",
+  "ip": "172.31.91.13",
+  "name": "ch-eks-keeper",
+  "nodegroup": "KeeperNodeGroup3-dftICEHgfjCe",
+  "volumes": [
+   {
+    "device": "/dev/xvda",
+    "id": "vol-00000000000000013"
+   },
+   {
+    "device": "/dev/xvdaa",
+    "id": "vol-00000000000000014"
+   }
+  ],
+  "role": "Keeper3"
+ },
+ {
+  "id": "i-00000000000000008",
+  "type": "m7g.large",
+  "az": "us-west-2c",
+  "arch": "arm64",
+  "ip": "172.31.80.88",
+  "name": "ch-eks-system",
+  "nodegroup": "SystemNodeGroup-lOFFGuAGq4cb",
+  "volumes": [
+   {
+    "device": "/dev/xvda",
+    "id": "vol-00000000000000015"
+   }
+  ],
+  "role": "System"
+ },
+ {
+  "id": "i-00000000000000009",
+  "type": "m7g.large",
+  "az": "us-west-2a",
+  "arch": "arm64",
+  "ip": "172.31.107.173",
+  "name": "ch-eks-keeper",
+  "nodegroup": "KeeperNodeGroup1-O4h3Qv0c7lK9",
+  "volumes": [
+   {
+    "device": "/dev/xvda",
+    "id": "vol-00000000000000016"
+   },
+   {
+    "device": "/dev/xvdaa",
+    "id": "vol-00000000000000017"
+   }
+  ],
+  "role": "Keeper1"
+ },
+ {
+  "id": "i-00000000000000010",
+  "type": "m7g.2xlarge",
+  "az": "us-west-2a",
+  "arch": "arm64",
+  "ip": "172.31.106.25",
+  "name": "ch-eks-server",
+  "nodegroup": "ServerNodeGroup1-QmCOuFTYtENa",
+  "volumes": [
+   {
+    "device": "/dev/xvda",
+    "id": "vol-00000000000000018"
+   },
+   {
+    "device": "/dev/xvdaa",
+    "id": "vol-00000000000000019"
+   }
+  ],
+  "role": "ChS1R1"
+ },
+ {
+  "id": "i-00000000000000011",
+  "type": "m7g.large",
+  "az": "us-west-2b",
+  "arch": "arm64",
+  "ip": "172.31.65.163",
+  "name": "ch-eks-system",
+  "nodegroup": "SystemNodeGroup-lOFFGuAGq4cb",
+  "volumes": [
+   {
+    "device": "/dev/xvda",
+    "id": "vol-00000000000000020"
+   }
+  ],
+  "role": "System"
+ },
+ {
+  "id": "i-00000000000000012",
+  "type": "m7g.2xlarge",
+  "az": "us-west-2b",
+  "arch": "arm64",
+  "ip": "172.31.78.63",
+  "name": "ch-eks-server",
+  "nodegroup": "ServerNodeGroup2-VCeUT0G7IV6l",
+  "volumes": [
+   {
+    "device": "/dev/xvda",
+    "id": "vol-00000000000000021"
+   },
+   {
+    "device": "/dev/xvdaa",
+    "id": "vol-00000000000000022"
+   }
+  ],
+  "role": "ChS1R2"
+ }
+]

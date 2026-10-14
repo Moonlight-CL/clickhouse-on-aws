@@ -1,0 +1,18 @@
+[
+  {"ParameterKey": "ClusterName", "ParameterValue": "tokenhub"},
+  {"ParameterKey": "ClickHouseVersion", "ParameterValue": "25.8.33.6"},
+  {"ParameterKey": "ClickHouseInstanceType", "ParameterValue": "m7g.2xlarge"},
+  {"ParameterKey": "KeeperInstanceType", "ParameterValue": "m7g.large"},
+  {"ParameterKey": "ShardCount", "ParameterValue": "1"},
+  {"ParameterKey": "ReplicaCount", "ParameterValue": "2"},
+  {"ParameterKey": "KeeperCount", "ParameterValue": "3"},
+  {"ParameterKey": "VpcId", "ParameterValue": "vpc-0123456789abcdef0"},
+  {"ParameterKey": "SubnetIds", "ParameterValue": "subnet-0aaaaaaaaaaaaaaa1,subnet-0aaaaaaaaaaaaaaa2,subnet-0aaaaaaaaaaaaaaa3"},
+  {"ParameterKey": "MultiAZ", "ParameterValue": "true"},
+  {"ParameterKey": "SystemVolumeSize", "ParameterValue": "30"},
+  {"ParameterKey": "DataVolumeSize", "ParameterValue": "100"},
+  {"ParameterKey": "DataVolumeIops", "ParameterValue": "3000"},
+  {"ParameterKey": "DataVolumeThroughput", "ParameterValue": "125"},
+  {"ParameterKey": "KeeperDataVolumeSize", "ParameterValue": "20"},
+  {"ParameterKey": "ClientCidr", "ParameterValue": "172.31.0.0/16"}
+]

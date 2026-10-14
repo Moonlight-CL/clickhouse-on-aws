@@ -1,0 +1,102 @@
+[
+    {
+        "id": "vol-00000000000000009",
+        "size": 30,
+        "type": "gp3",
+        "iops": 3000,
+        "throughput": 125,
+        "encrypted": true,
+        "instance": "i-00000000000000005",
+        "device": "/dev/xvda"
+    },
+    {
+        "id": "vol-00000000000000006",
+        "size": 100,
+        "type": "gp3",
+        "iops": 3000,
+        "throughput": 125,
+        "encrypted": true,
+        "instance": "i-00000000000000003",
+        "device": "/dev/sdb"
+    },
+    {
+        "id": "vol-00000000000000007",
+        "size": 30,
+        "type": "gp3",
+        "iops": 3000,
+        "throughput": 125,
+        "encrypted": true,
+        "instance": "i-00000000000000004",
+        "device": "/dev/xvda"
+    },
+    {
+        "id": "vol-00000000000000001",
+        "size": 30,
+        "type": "gp3",
+        "iops": 3000,
+        "throughput": 125,
+        "encrypted": true,
+        "instance": "i-00000000000000001",
+        "device": "/dev/xvda"
+    },
+    {
+        "id": "vol-00000000000000003",
+        "size": 30,
+        "type": "gp3",
+        "iops": 3000,
+        "throughput": 125,
+        "encrypted": true,
+        "instance": "i-00000000000000002",
+        "device": "/dev/xvda"
+    },
+    {
+        "id": "vol-00000000000000008",
+        "size": 20,
+        "type": "gp3",
+        "iops": 3000,
+        "throughput": 125,
+        "encrypted": true,
+        "instance": "i-00000000000000004",
+        "device": "/dev/sdb"
+    },
+    {
+        "id": "vol-00000000000000010",
+        "size": 20,
+        "type": "gp3",
+        "iops": 3000,
+        "throughput": 125,
+        "encrypted": true,
+        "instance": "i-00000000000000005",
+        "device": "/dev/sdb"
+    },
+    {
+        "id": "vol-00000000000000004",
+        "size": 100,
+        "type": "gp3",
+        "iops": 3000,
+        "throughput": 125,
+        "encrypted": true,
+        "instance": "i-00000000000000002",
+        "device": "/dev/sdb"
+    },
+    {
+        "id": "vol-00000000000000005",
+        "size": 30,
+        "type": "gp3",
+        "iops": 3000,
+        "throughput": 125,
+        "encrypted": true,
+        "instance": "i-00000000000000003",
+        "device": "/dev/xvda"
+    },
+    {
+        "id": "vol-00000000000000002",
+        "size": 20,
+        "type": "gp3",
+        "iops": 3000,
+        "throughput": 125,
+        "encrypted": true,
+        "instance": "i-00000000000000001",
+        "device": "/dev/sdb"
+    }
+]

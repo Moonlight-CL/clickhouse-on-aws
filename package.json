@@ -1,0 +1,28 @@
+{
+  "name": "clickhouse-on-aws",
+  "version": "0.1.0",
+  "private": true,
+  "description": "One-click ClickHouse cluster (with ClickHouse Keeper) on Amazon EC2, via AWS CDK or a standalone CloudFormation template",
+  "bin": {
+    "clickhouse-on-aws": "bin/clickhouse-on-aws.js"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "jest",
+    "synth": "cdk synth",
+    "synth-template": "cdk synth --quiet --path-metadata false --version-reporting false ClickHouseCluster ClickHouseEks && node -e \"const fs=require('fs');fs.mkdirSync('templates',{recursive:true});for(const [s,f] of [['ClickHouseCluster','clickhouse-cluster'],['ClickHouseEks','clickhouse-eks']])fs.writeFileSync('templates/'+f+'.template.json',JSON.stringify(require('./cdk.out/'+s+'.template.json'),null,1)+'\\n')\""
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.0",
+    "aws-cdk": "^2.1000.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.6.3"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.273.0",
+    "constructs": "^10.4.2"
+  }
+}
